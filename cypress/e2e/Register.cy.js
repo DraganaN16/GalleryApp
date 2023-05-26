@@ -25,7 +25,7 @@ beforeEach(() => {
 
 
 describe("Register page - PO", () => {
-  it.only("Registration with valid credentials", () => {
+  it("Registration with valid credentials", () => {
     cy.get(locators.registerPage.firstNameInputField).type("Pera");
     cy.get(locators.registerPage.lastNameInputField).type("Peric");
     cy.get(locators.registerPage.emailInputField).type(user.email);
@@ -50,7 +50,7 @@ describe("Register page - PO", () => {
   it("Register with minimum characters in the first name", () => {
     cy.get(locators.registerPage.firstNameInputField).type("X");
     cy.get(locators.registerPage.lastNameInputField).type(user.lastName);
-    cy.get(locators.registerPage.emailInputField).type(faker.internet.email);
+    cy.get(locators.registerPage.emailInputField).type(user.email);
     cy.get(locators.registerPage.passwordInputField).type(user.password);
     cy.get(locators.registerPage.passwordConfirmationInputField).type(user.password);
     cy.get(locators.registerPage.checkbox).check();
