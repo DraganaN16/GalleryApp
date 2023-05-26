@@ -1,4 +1,18 @@
 {
+    "registerPage" : {
+        "firstNameInputField": "#first-name",
+        "lastNameInputField": "#last-name",
+        "emailInputField": "#email",
+        "passwordInputField": "#password",
+        "passwordConfirmationInputField": "#password-confirmation",
+        "checkbox": "[type='checkbox']",
+        "submitButton": "[class='btn btn-custom']"
+    },
+
+
+
+
+
     "loginPage" : {
        "emailInputField": "#email",
        "passwordInputField": "#password",

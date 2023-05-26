@@ -1,5 +1,16 @@
 /// <reference types='cypress'/>
 
+const locators = require("../fixtures/locators.json");
+
+import {faker} from '@faker-js/faker'
+
+var firstName
+var lastName
+var email
+var password
+var passwordConfirmation
+
+
 before(() => {
   cy.clearAllCookies()
   cy.clearAllLocalStorage()
@@ -13,96 +24,103 @@ beforeEach(() => {
 
 describe("Register page - PO", () => {
   it("Registration with valid credentials", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    
+    firstName = faker.person.firstName();
+    lastName = faker.person.lastName();
+    email = faker.internet.email();
+    password = faker.internet.password();
+    passwordConfirmation = faker.internet.password();
+
+    cy.get(locators.registerPage.firstNameInputField).type(firstName);
+    cy.get(locators.registerPage.lastNameInputField).type(lastName);
+    cy.get(locators.registerPage.emailInputField).type(email);
+    cy.get(locators.registerPage.passwordInputField).type(password);
+    cy.get(locators.registerPage.passwordConfirmationInputField).type(passwordConfirmation);
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
   it("Spaces befor first and last name", () => {
-    cy.get("#first-name").type("   Pera");
-    cy.get("#last-name").type("   Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("  firstName");
+    cy.get(locators.registerPage.lastNameInputField).type("   lastName");
+    cy.get(locators.registerPage.emailInputField).type(email);
+    cy.get(locators.registerPage.passwordInputField).type(password);
+    cy.get(locators.registerPage.passwordConfirmationInputField).type(passwordConfirmation);
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
   it("Register with minimum characters in the first name", () => {
-    cy.get("#first-name").type("X");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("X");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("First name - numbers", () => {
-    cy.get("#first-name").type("111");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("111");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Last name - char", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("@@@");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("@@@");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
 
   it("Register with unicode characters in first name", () => {
-    cy.get("#first-name").type("Драгана");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Драгана");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Password with space", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam 100");
-    cy.get("#password-confirmation").type("pokusavam 100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam 100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam 100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Password with 8 characters- all numbers", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("10000000");
-    cy.get("#password-confirmation").type("10000000");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("10000000");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("10000000");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   })
 });
@@ -110,96 +128,99 @@ describe("Register page - PO", () => {
 
 
 describe("Register page - NEG", () => {
+
+  email = faker.internet.email();
+  password = faker.internet.password();
+
   it("First name- empty field", () => {
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Peric");
+    cy.get(locators.registerPage.lastNameInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Last name - empty field", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
-    cy.wait(3000);
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
   });
 
   it("All empty field", () => {
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
   it("Register with spaces in first and last name", () => {
-    cy.get("#first-name").type(" ");
-    cy.get("#last-name").type(" ");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type(" ");
+    cy.get(locators.registerPage.lastNameInputField).type(" ");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
   it("Empty passwords field", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Confirmed password- wrong", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("talala");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("talala");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
   it("Password with 8 characters- all letters", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("llllllll");
-    cy.get("#password-confirmation").type("llllllll");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type(firstName);
+    cy.get(locators.registerPage.lastNameInputField).type(lastName);
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("llllllll");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("llllllll");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
 
   it("Email without @, invalid format", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaagmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get(".form-check-input").click();
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type(firstName);
+    cy.get(locators.registerPage.lastNameInputField).type(lastName);
+    cy.get(locators.registerPage.emailInputField).type("draganaagmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.checkbox).click();
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   });
 
 
   it("Accepted terms and conditions isn't checked", () => {
-    cy.get("#first-name").type("Pera");
-    cy.get("#last-name").type("Peric");
-    cy.get("#email").type("draganaa@gmail.com");
-    cy.get("#password").type("pokusavam100");
-    cy.get("#password-confirmation").type("pokusavam100");
-    cy.get("[class='btn btn-custom']").click();
+    cy.get(locators.registerPage.firstNameInputField).type("Pera");
+    cy.get(locators.registerPage.lastNameInputField).type("Peric");
+    cy.get(locators.registerPage.emailInputField).type("draganaa@gmail.com");
+    cy.get(locators.registerPage.passwordInputField).type("pokusavam100");
+    cy.get(locators.registerPage.passwordConfirmationInputField).type("pokusavam100");
+    cy.get(locators.registerPage.submitButton).click();
     cy.wait(3000);
   })
 
