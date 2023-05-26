@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/cypress open"
   },
   "keywords": [],
-  "author": "Dragana",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.13.0"

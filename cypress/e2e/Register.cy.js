@@ -1,8 +1,18 @@
 /// <reference types='cypress'/>
 
+before(() => {
+  cy.clearAllCookies()
+  cy.clearAllLocalStorage()
+  cy.clearAllSessionStorage()
+})
+
+beforeEach(() => {
+  cy.visit("register");
+})
+
+
 describe("Register page - PO", () => {
   it("Registration with valid credentials", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -14,7 +24,6 @@ describe("Register page - PO", () => {
   });
 
   it("Spaces befor first and last name", () => {
-    cy.visit("register");
     cy.get("#first-name").type("   Pera");
     cy.get("#last-name").type("   Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -26,7 +35,6 @@ describe("Register page - PO", () => {
   });
 
   it("Register with minimum characters in the first name", () => {
-    cy.visit("register");
     cy.get("#first-name").type("X");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -39,7 +47,6 @@ describe("Register page - PO", () => {
 
 
   it("First name - numbers", () => {
-    cy.visit("register");
     cy.get("#first-name").type("111");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -52,7 +59,6 @@ describe("Register page - PO", () => {
 
 
   it("Last name - char", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("@@@");
     cy.get("#email").type("draganaa@gmail.com");
@@ -66,7 +72,6 @@ describe("Register page - PO", () => {
 
 
   it("Register with unicode characters in first name", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Драгана");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -79,7 +84,6 @@ describe("Register page - PO", () => {
 
 
   it("Password with space", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -92,7 +96,6 @@ describe("Register page - PO", () => {
 
 
   it("Password with 8 characters- all numbers", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -108,7 +111,6 @@ describe("Register page - PO", () => {
 
 describe("Register page - NEG", () => {
   it("First name- empty field", () => {
-    cy.visit("register");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
     cy.get("#password").type("pokusavam100");
@@ -120,7 +122,6 @@ describe("Register page - NEG", () => {
 
 
   it("Last name - empty field", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#email").type("draganaa@gmail.com");
     cy.get("#password").type("pokusavam100");
@@ -131,13 +132,11 @@ describe("Register page - NEG", () => {
   });
 
   it("All empty field", () => {
-    cy.visit("register");
     cy.get("[class='btn btn-custom']").click();
     cy.wait(3000);
   });
 
   it("Register with spaces in first and last name", () => {
-    cy.visit("register");
     cy.get("#first-name").type(" ");
     cy.get("#last-name").type(" ");
     cy.get("#email").type("draganaa@gmail.com");
@@ -149,7 +148,6 @@ describe("Register page - NEG", () => {
   });
 
   it("Empty passwords field", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -160,7 +158,6 @@ describe("Register page - NEG", () => {
 
 
   it("Confirmed password- wrong", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -172,7 +169,6 @@ describe("Register page - NEG", () => {
   });
 
   it("Password with 8 characters- all letters", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
@@ -186,7 +182,6 @@ describe("Register page - NEG", () => {
 
 
   it("Email without @, invalid format", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaagmail.com");
@@ -199,7 +194,6 @@ describe("Register page - NEG", () => {
 
 
   it("Accepted terms and conditions isn't checked", () => {
-    cy.visit("register");
     cy.get("#first-name").type("Pera");
     cy.get("#last-name").type("Peric");
     cy.get("#email").type("draganaa@gmail.com");
