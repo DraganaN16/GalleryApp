@@ -1,0 +1,8 @@
+{
+    "loginPage" : {
+       "emailInputField": "#email",
+       "passwordInputField": "#password",
+       "submitButton": "button[type='submit']"
+     
+    }
+}
