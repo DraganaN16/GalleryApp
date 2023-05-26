@@ -3,7 +3,7 @@
 const locators = require("../fixtures/locators.json");
 
 import {faker} from '@faker-js/faker'
-import { uniqueSort } from 'cypress/types/jquery';
+
 
 let user = {
   firstName: faker.person.firstName(),
