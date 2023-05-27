@@ -43,9 +43,9 @@ describe("Create gallery- PO", () => {
     createGalleryPage.titleInput.type("Flower");
     createGalleryPage.descriptionInput.type("tulip");
     createGalleryPage.imageUrlInput.type("https://images.pexels.com/photos/175695/pexels-photo-175695.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=252&fit=crop&h=408");
-    cy.get('form > :nth-child(3) > :nth-child(3)').click();
-    cy.get(":nth-child(3) > .input-group > .form-control").type("https://images.pexels.com/photos/36729/tulip-flower-bloom-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    cy.get('form > :nth-child(4)').click();
+    createGalleryPage.addButton.click();
+    createGalleryPage.imageUrlInput.type("https://images.pexels.com/photos/36729/tulip-flower-bloom-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    createGalleryPage.submitButton.click();
     cy.wait(3000);
   });
 

@@ -16,6 +16,10 @@ class CreateGalleryPage {
         return cy.get(".input-group > .form-control");
     }
 
+    get addButton(){
+        return cy.get('form > :nth-child(3) > :nth-child(3)');
+    }
+
     get submitButton(){
         return cy.get("form > :nth-child(4)");
     }
