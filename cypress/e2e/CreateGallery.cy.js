@@ -5,13 +5,6 @@ import {faker} from "@faker-js/faker"
 import { createGalleryPage } from "../page_objects/createGallery"
 
 
-let user = {
-  firstName: faker.person.firstName(),
-  lastName: faker.person.lastName(),
-  email: faker.internet.email(),
-  password: faker.internet.password()
-}
-
 before(() => {
   cy.clearAllCookies()
   cy.clearAllLocalStorage()
@@ -44,7 +37,7 @@ describe("Create gallery- PO", () => {
     createGalleryPage.descriptionInput.type("tulip");
     createGalleryPage.imageUrlInput.type("https://images.pexels.com/photos/175695/pexels-photo-175695.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=252&fit=crop&h=408");
     createGalleryPage.addButton.click();
-    createGalleryPage.imageUrlInput.type("https://images.pexels.com/photos/36729/tulip-flower-bloom-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    createGalleryPage.imageUrlInput2.type("https://images.pexels.com/photos/36729/tulip-flower-bloom-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     createGalleryPage.submitButton.click();
     cy.wait(3000);
   });
