@@ -4,6 +4,8 @@ import {faker} from "@faker-js/faker"
 
 import { registerPage } from "../page_objects/registerPage"
 
+import { commonElements } from "../page_objects/commonElements"
+
 let user = {
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
