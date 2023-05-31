@@ -8,7 +8,7 @@ import {faker} from '@faker-js/faker'
 let user = {
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
-  email: faker.internet.email(),//kada zelimo da koristimo isti email u svim testovima upotrebljavamo user.email; ako zelimo svaki put novi mail koristimo funkciju: faker.internet.email()
+  email: faker.internet.email(),
   password: faker.internet.password()
 }
 

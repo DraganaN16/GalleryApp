@@ -54,6 +54,23 @@ before(() => {
       registerPage.submitButton.click();
       cy.wait(3000);
     });
+
+    it.only("Register with maximum characters in the first name", () => {
+
+      var d = "";
+      for(let i=0; i<255;i++){
+        d+= 'd';
+      }
+
+      registerPage.firstNameInputField.type(d);
+      registerPage.lastNameInputField.type(user.lastName);
+      registerPage.emailInputField.type(user.email);
+      registerPage.passwordInputField.type(user.password);
+      registerPage.passwordConfirmationInputField.type(user.password);
+      registerPage.checkbox.check();
+      registerPage.submitButton.click();
+      cy.wait(3000);
+    });
   
   
     it("First name - numbers", () => {
