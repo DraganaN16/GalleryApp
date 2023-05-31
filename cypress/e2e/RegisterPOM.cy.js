@@ -22,14 +22,19 @@ before(() => {
   })
 
   describe("Register page - PO", () => {
+    it.only("Registration with valid credentials", () => {
+      registerPage.registerNewUser("Pera", "Peric", "draganan55@gmail.com", "pokusavam100", "pokusavam100")
+      cy.wait(3000);
+    });
+
     it("Registration with valid credentials", () => {
-      registerPage.firstNameInputField.type("Pera");
-      registerPage.lastNameInputField.type("Peric");
-      registerPage.emailInputField.type(user.email);
-      registerPage.passwordInputField.type(user.password);
-      registerPage.passwordConfirmationInputField.type(user.password);
-      registerPage.checkbox.check();
-      registerPage.submitButton.click();
+       registerPage.firstNameInputField.type("Pera");
+       registerPage.lastNameInputField.type("Peric");
+       registerPage.emailInputField.type(user.email);
+       registerPage.passwordInputField.type(user.password);
+       registerPage.passwordConfirmationInputField.type(user.password);
+       registerPage.checkbox.check();
+       registerPage.submitButton.click();
       cy.wait(3000);
     });
   
@@ -55,7 +60,7 @@ before(() => {
       cy.wait(3000);
     });
 
-    it.only("Register with maximum characters in the first name", () => {
+    it("Register with maximum characters in the first name", () => {
 
       var d = "";
       for(let i=0; i<255;i++){

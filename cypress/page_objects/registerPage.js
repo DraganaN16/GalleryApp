@@ -21,6 +21,18 @@ class RegisterPage{
         return cy.get("[class='btn btn-custom']")
     }
 
+    registerNewUser(firstName, lastName, email, password, passwordConfirmation){
+        this.firstNameInputField.type(firstName);
+        this.lastNameInputField.type(lastName);
+        this.emailInputField.type(email);
+        this.passwordInputField.type(password);
+        this.passwordConfirmationInputField.type(password);
+        this.checkbox.check();
+        this.submitButton.click();
+    }
+      
+
+
 }
 
 export const registerPage = new RegisterPage();

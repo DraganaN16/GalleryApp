@@ -22,7 +22,13 @@ describe("Login page-PO", () => {
         loginPage.submitButton.click();
         cy.wait(3000);
 
-    })
+    });
+
+    it("Log in with valid email and password", () =>{
+      loginPage.loginUser("draganan@gmail.com", "pokusavam100");
+      cy.wait(3000);
+
+  })
 })
 
 describe("Login page-NEG", () => {
