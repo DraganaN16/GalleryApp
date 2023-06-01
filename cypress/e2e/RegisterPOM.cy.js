@@ -24,7 +24,7 @@ before(() => {
   })
 
   describe("Register page - PO", () => {
-    it.only("Registration with valid credentials", () => {
+    it("Registration with valid credentials", () => {
       registerPage.registerNewUser("Pera", "Peric", "draganan55@gmail.com", "pokusavam100", "pokusavam100")
       cy.wait(3000);
     });

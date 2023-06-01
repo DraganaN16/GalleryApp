@@ -5,6 +5,9 @@ class CommonElements{
     get logotBtn(){
         return cy.get("a").contains("Button");
     }
+    get errorMessage(){
+        return cy.get(".alert");
+    }
     get galleryName(){
         return cy.get("box-title");
     }
