@@ -14,6 +14,9 @@ class CommonElements{
     get registerEmail(){
         return cy.get("input[id='email']");
     }
+    get galleryName(){
+        return cy.get(":nth-child(1) > h2 > .box-title");
+    }
     
 }
 

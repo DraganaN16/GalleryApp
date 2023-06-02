@@ -28,6 +28,16 @@ class CreateGalleryPage {
         return cy.get("form > :nth-child(4)");
     }
 
+    createNewGallery(title, description, imageUrl, imageUrl2){
+        this.navLink.click();
+        this.titleInput.type(title);
+        this.descriptionInput.type(description);
+        this.imageUrlInput.type(imageUrl);
+        this.imageUrlInput2.type(imageUrl2);
+        this.addButton.click();
+        this.submitButton.click();
+    }
+
 }
 
 export const createGalleryPage = new CreateGalleryPage();
