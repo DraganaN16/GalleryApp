@@ -228,13 +228,12 @@ before(() => {
     });
   
   
-    it("Accepted terms and conditions isn't checked", () => {
+    it.only("Accepted terms and conditions isn't checked", () => {
       registerPage.firstNameInputField.type(user.firstName);
       registerPage.lastNameInputField.type(user.lastName);
       registerPage.emailInputField.type(user.email);
       registerPage.passwordInputField.type(user.password);
       registerPage.passwordConfirmationInputField.type(user.password);
-      registerPage.checkbox.check();
       registerPage.submitButton.click();
       cy.wait(3000);
     })

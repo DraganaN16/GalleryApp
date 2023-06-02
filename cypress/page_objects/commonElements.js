@@ -6,17 +6,15 @@ class CommonElements{
         return cy.get("a").contains("Button");
     }
     get errorMessage(){
-        return cy.get(".alert");
+        return cy.get('p[class="alert alert-danger"]');
     }
     get galleryName(){
         return cy.get("box-title");
     }
     get registerEmail(){
-        return cy.get(".alert");
+        return cy.get("input[id='email']");
     }
-    get acceptedTerms(){
-        return cy.get(":nth-child(6) > .alert")
-    }
+    
 }
 
 

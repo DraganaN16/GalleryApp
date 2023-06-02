@@ -22,6 +22,7 @@ before(() => {
   beforeEach(() => {
     cy.visit("register");
   })
+
   afterEach(() =>{
     cy.wait(3000);
   })
@@ -100,8 +101,7 @@ before(() => {
       });
     
       it("Register with spaces in first and last name", () => {
-        registerPage.registerNewUser("{backspace}", "{backspace}",  user.email, user.password, user.password)
-        // registerPage.lastNameInputField.type(" ");
+        registerPage.registerNewUser("{backspace}", "{backspace}",  user.email, user.password, user.password);
         
       });
     
@@ -111,28 +111,52 @@ before(() => {
       });
     
     
-    //   it("Confirmed password- wrong", () => {
-    //     registerPage.registerNewUser(user.firstName, user.lastName, user.email, "pokusavam100", faker.internet.password());
-       
-    //   });
+      it("Confirmed password- wrong", () => {
+        registerPage.registerNewUser(user.firstName, user.lastName, user.email, "pokusavam100", faker.internet.password());
+        commonElements.errorMessage.should("exist")
+        .should("contain", "The password confirmation does not match.")
+        .and("be.visible")
+        .and("have.class", "alert alert-danger")
+        .and("have.css", "background-color", "rgb(248, 215, 218)")
+        .and("have.css", "color", "rgb(114, 28, 36)");
+      });
     
       it("Password with 8 characters- all letters", () => {
         registerPage.registerNewUser(user.firstName, user.lastName, user.email, "llllllll", "llllllll");
-        
+        commonElements.errorMessage.should("exist")
+        .should("contain", "The password format is invalid.")
+        .and("be.visible")
+        .and("have.class", "alert alert-danger")
+        .and("have.css", "background-color", "rgb(248, 215, 218)")
+        .and("have.css", "color", "rgb(114, 28, 36)");
       });
     
     
     
       it("Email without @, invalid format", () => {
         registerPage.registerNewUser(user.firstName, user.lastName, "draganaagmail.com", user.password, user.password );
-        
+        commonElements.registerEmail
+        .should("exist")
+        .and("be.visible")
+        .and("not.have", "@")
+        .and("have.css", "color","rgb(73, 80, 87)")
+        .should("have.css", "background-color", "rgb(255, 255, 255)");   
       });
     
     
-    //    it.only("Accepted terms and conditions isn't checked", () => {
-    //      registerPage.registerNewUser(user.firstName, user.lastName, user.email, user.password, user.password);
-    //      registerPage.acceptedTerms.uncheck();
-    //      registerPage.submitButton.click();
-    //    })
+         it("Accepted terms and conditions isn't checked", () => {
+         registerPage.registerNewUser(user.firstName, user.lastName, user.email, user.password, user.password);
+         registerPage.checkbox.uncheck();
+         registerPage.submitButton.click();
+         cy.wait(3000);
+        //  commonElements.errorMessage
+        //  .should("have.text", "The terms and conditions must be accepted.")
+        //  .and("be.visible")
+        //  .and("exist")
+        //  .and("have.css",".alert alert-danger")
+        //  .and("have", "color", "rgb(114,28,36)")
+        //  .and("have", "background-color", "rgb(248,215,218)")
+        //  .and("have", "border-color", "rgb(245,198,203)")
+       })
     
     });

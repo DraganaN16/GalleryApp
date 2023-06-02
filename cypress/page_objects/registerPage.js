@@ -26,7 +26,7 @@ class RegisterPage{
         this.lastNameInputField.type(lastName);
         this.emailInputField.type(email);
         this.passwordInputField.type(password);
-        this.passwordConfirmationInputField.type(password);
+        this.passwordConfirmationInputField.type(passwordConfirmation);
         this.checkbox.check();
         this.submitButton.click();
     }
