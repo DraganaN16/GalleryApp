@@ -24,16 +24,16 @@ describe('Register Via API', () => {
 
         }).its('body').then((response) => {
             cy.log(response);
-            // const  token  = response.access_token;
-            // expect(token).to.be.a("string");
+            //  const  token  = response.access_token;
+            //  expect(token).to.be.a("string");
 
-            // const userId = response.user_id;
-            // expect(userId).to.be.a("number");
+            //  const userId = response.user_id;
+            //  expect(userId).to.be.a("number");
 
-            // window.localStorage.setItem("access_token", token)
-            // window.localStorage.setItem("user_Id", userId)
-            // console.log(token);
-            // console.log(userId);
+            //  window.localStorage.setItem("access_token", token)
+            //  window.localStorage.setItem("user_Id", userId)
+            //  console.log(token);
+            //  console.log(userId);
         })
 
     });
