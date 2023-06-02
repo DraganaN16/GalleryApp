@@ -121,7 +121,7 @@ describe("Create gallery- NEG", () => {
 
   });
 
-  it.only("Title one character", () => {
+  it("Title one character", () => {
     createGalleryPage.navLink.click();
     createGalleryPage.titleInput.type("X");
     createGalleryPage.descriptionInput.type("tulip");
@@ -142,6 +142,12 @@ describe("Create gallery- NEG", () => {
     createGalleryPage.imageUrlInput.type("https://images.pexels.com/photos/36729/tulip-flower-bloom-pink")
     createGalleryPage.submitButton.click();
     cy.wait(3000);
+    
+    commonElements.errorMessage
+    .should("contain", "Wrong format of image")
+    .and("have.class", "alert-danger")
+    .and("have.css", "color", "rgb(114, 28, 36)" )
+
   }); 
 
   it("Gallery without image", () => {
