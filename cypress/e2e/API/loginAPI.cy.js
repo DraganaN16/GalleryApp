@@ -1,7 +1,8 @@
 /// <reference types='cypress'/>
 
 import {faker} from "@faker-js/faker"
-import { method } from "cypress/types/bluebird"
+
+//import { method } from "cypress/types/bluebird"
 
 const registeredEmail = "draganan@gmail.com"
 

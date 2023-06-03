@@ -1,6 +1,7 @@
 /// <reference types='cypress'/>
 
 import {commonElements} from "../page_objects/commonElements"
+
 import {faker} from "@faker-js/faker"
 
 describe('Register Via API', () => {

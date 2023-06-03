@@ -10,7 +10,7 @@ module.exports = defineConfig({
     baseUrl: "https://gallery-app.vivifyideas.com/",
 
     env: {
-      registeredREmail: "draganan@gmail.com",
+      registeredEmail: "draganan@gmail.com",
       validPassword: "pokusavam100",
       baseApiUrl: "https://gallery-api.vivifyideas.com/api/",
       //myGalleriesButtonLabel: "My Galleries"
