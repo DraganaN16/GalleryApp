@@ -2,7 +2,9 @@
 
 import {faker} from "@faker-js/faker"
 
-//import {loginViaApi} from ""?
+import { loginPage } from "../page_objects/loginPage"
+
+//import {loginViaApi} from ""??
 
 const registeredEmail = "draganan@gmail.com"
 
@@ -67,7 +69,7 @@ before(() => {
         //cy.wait(3000);
     })
 
-    it.only("Login API-negative case, intercept", () =>{
+    it("Login API-negative case, intercept", () =>{
         cy.intercept({
             method:"POST",
             url: "https://gallery-api.vivifyideas.com/api/auth/login"

@@ -4,6 +4,8 @@ import {commonElements} from "../page_objects/commonElements"
 
 import {faker} from "@faker-js/faker"
 
+import { registerPage } from "../page_objects/registerPage"
+
 describe('Register Via API', () => {
 
     before(() => {
