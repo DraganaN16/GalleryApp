@@ -8,11 +8,13 @@ import { loginPage } from "../page_objects/loginPage"
 
 const registeredEmail = "draganan@gmail.com"
 
-before(() => {
+describe("Login Via API", () => {
+
+   before(() => {
     cy.clearAllCookies()
     cy.clearAllLocalStorage()
     cy.clearAllSessionStorage()
-  })
+    })
 
 
     beforeEach(() =>{
@@ -91,4 +93,6 @@ before(() => {
 
             window.localStorage.setItem("token", token)
         })
-    }); 
+    })
+
+});
