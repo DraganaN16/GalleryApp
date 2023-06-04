@@ -4,7 +4,7 @@ import {faker} from "@faker-js/faker"
 
 import { loginPage } from "../page_objects/loginPage"
 
-//import {loginViaApi} from ""??
+//import {loginViaApi} from ""
 
 const registeredEmail = "draganan@gmail.com"
 
