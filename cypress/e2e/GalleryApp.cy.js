@@ -4,3 +4,4 @@ describe('Home page', () => {
     cy.wait(3000)
   })
 })
+

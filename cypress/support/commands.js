@@ -26,11 +26,11 @@
 
 
 
- Cypress.Commands.add("loginViaApi",(email, password) => {
+ Cypress.Commands.add("loginViaApi",(email, password) => { ///moram dodeliti vrednost email = "draganan@gmail"...inace ce puci
 
      // let registeredEmail = "draganan@gmail.com"
 
-     cy.request({
+     cy.request({                  ///ja ti saljem na backennd ovo
          method: "POST",
          url:  "https://gallery-api.vivifyideas.com/api/auth/login",
          body:{
@@ -38,14 +38,14 @@
              "password": password
          }
      }).its("body").then((response) => {  ///ovo uvek moze da bude isto
-            //cy.log(response);
+            //cy.log(response);   backend vraca ovo
             const token  = response.access_token;
             expect(token).to.be.a("string");
 
            const userId = response.user_id;
             expect(userId).to.be.a("number");
 
-            window.localStorage.setItem("token", token)
+            window.localStorage.setItem("token", token)  //("token", odgovor.access_token) proveriti i opvo, sad je tako napoisao
             window.localStorage.setItem("user_Id", userId)
            
      })
@@ -57,28 +57,28 @@
    });
 
 
-// Cypress.Commands.add("registerViaApi",(first_name,last_name, email, password, password_confirmation) => {
+// Cypress.Commands.add("registerViaApi",(firstName,lastName, email, pass, passConfirm, acceptTerms = true) => {
 //     let unregisterEmail = faker.internet.email();
 
 //     cy.request({
 //         method: "POST",
 //          url: "https://gallery-api.vivifyideas.com/api/auth/register",
 //          body: {
-//              "first_name": "Pera",
-//              "last_name": "Pericev",
-//              "email": unregisterEmail,
-//              "password": "pokusavam100",
-//              "password_confirmation": "pokusavam100",
-//              "terms_and_conditions": true
+//              "first_name": firstName,
+//              "last_name": lastName,
+//              "email": email,
+//              "password": pass,
+//              "password_confirmation": passConfirm,
+//              "terms_and_conditions": acceptTerms
 //          }
 
-//      }).its('body').then((response) => {
+//      }).its('body').then((respopnse) => {
 //          cy.log(response);
 //            const  token  = response.access_token;
 //            expect(token).to.be.a("string");
 
 //            const userId = response.user_id;
-//            expect(userId).to.be.a("number");
+//            expect(userId).to.be.a("number");     prvo ovo sve proveravamo pa stavljamo u command, jer ako ovo padne,nista nece proci
 
 //           window.localStorage.setItem("token", token)
 //           window.localStorage.setItem("user_Id", userId)

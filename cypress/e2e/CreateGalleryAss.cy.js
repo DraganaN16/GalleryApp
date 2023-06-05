@@ -24,7 +24,7 @@ beforeEach(() => {
   cy.visit("login");
   loginPage.loginUser("draganan@gmail.com", "pokusavam100");
   cy.wait(3000);
-  cy.visit("create");
+  cy.visit("create"); ///ne treba ovo
 
 })
 

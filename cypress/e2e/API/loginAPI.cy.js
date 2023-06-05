@@ -31,9 +31,9 @@ describe("Login Via API", () => {
        const istoTako = Cypress.env("validPassword")
 
        const { registeredEmail, validPassword } = Cypress.env()  //3.naziv mora biti isti kao i u configu, voditi racuna
-       
+       //fali da pozovem fju
 
-        cy.loginViaApi( mozemoNazvatiKakoZelimo, istoTako)
+        cy.loginViaApi( mozemoNazvatiKakoZelimo, istoTako)  ///hocu preko backenda login
         cy.visit("");
         cy.wait(1500);
         cy.url().should("not.contain", "login")
