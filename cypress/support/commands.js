@@ -24,32 +24,65 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("loginViaApi",(email, pass) => {
 
-    // let registeredEmail = "draganan@gmail.com"
 
-    cy.request({
-        method: "POST",
-        url:  "https://gallery-api.vivifyideas.com/api/auth/login",
-        body:{
-            "email": email,
-            "password": pass
-        }
-    }).its("body").then((response) => {  ///ovo uvek moze da bude isto
-           //cy.log(response);
-           const token  = response.access_token;
-           expect(token).to.be.a("string");
+ Cypress.Commands.add("loginViaApi",(email, password) => {
+
+     // let registeredEmail = "draganan@gmail.com"
+
+     cy.request({
+         method: "POST",
+         url:  "https://gallery-api.vivifyideas.com/api/auth/login",
+         body:{
+             "email": email,
+             "password": password
+         }
+     }).its("body").then((response) => {  ///ovo uvek moze da bude isto
+            //cy.log(response);
+            const token  = response.access_token;
+            expect(token).to.be.a("string");
 
            const userId = response.user_id;
-           expect(userId).to.be.a("number");
+            expect(userId).to.be.a("number");
 
-           window.localStorage.setItem("token", token)
-           window.localStorage.setItem("user_Id", userId)
+            window.localStorage.setItem("token", token)
+            window.localStorage.setItem("user_Id", userId)
            
-    })
+     })
     
-    //    function sumTwoNumbers(num1, num2){
-    //     return num1+num2
-    //  }
-    //     sumTwoNumbers(1,5)
-  });
+    //     function sumTwoNumbers(num1, num2){
+    //      return num1+num2
+    //    }
+    //      sumTwoNumbers(1,5)
+   });
+
+
+// Cypress.Commands.add("registerViaApi",(first_name,last_name, email, password, password_confirmation) => {
+//     let unregisterEmail = faker.internet.email();
+
+//     cy.request({
+//         method: "POST",
+//          url: "https://gallery-api.vivifyideas.com/api/auth/register",
+//          body: {
+//              "first_name": "Pera",
+//              "last_name": "Pericev",
+//              "email": unregisterEmail,
+//              "password": "pokusavam100",
+//              "password_confirmation": "pokusavam100",
+//              "terms_and_conditions": true
+//          }
+
+//      }).its('body').then((response) => {
+//          cy.log(response);
+//            const  token  = response.access_token;
+//            expect(token).to.be.a("string");
+
+//            const userId = response.user_id;
+//            expect(userId).to.be.a("number");
+
+//           window.localStorage.setItem("token", token)
+//           window.localStorage.setItem("user_Id", userId)
+//           console.log(token);
+//           console.log(userId);
+//      })
+// });

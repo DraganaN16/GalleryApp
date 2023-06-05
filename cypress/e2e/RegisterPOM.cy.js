@@ -24,12 +24,13 @@ before(() => {
   })
 
   describe("Register page - PO", () => {
+
     it("Registration with valid credentials", () => {
       registerPage.registerNewUser("Pera", "Peric", "draganan55@gmail.com", "pokusavam100", "pokusavam100")
       cy.wait(3000);
     });
 
-    it("Registration with valid credentials", () => {
+    it.only("Registration with valid credentials", () => {
        registerPage.firstNameInputField.type("Pera");
        registerPage.lastNameInputField.type("Peric");
        registerPage.emailInputField.type(user.email);
@@ -228,7 +229,7 @@ before(() => {
     });
   
   
-    it.only("Accepted terms and conditions isn't checked", () => {
+    it("Accepted terms and conditions isn't checked", () => {
       registerPage.firstNameInputField.type(user.firstName);
       registerPage.lastNameInputField.type(user.lastName);
       registerPage.emailInputField.type(user.email);

@@ -22,9 +22,7 @@ before(() => {
 
 beforeEach(() => {
   cy.visit("login");
-  cy.get("#email").type("draganan@gmail.com");
-  cy.get("#password").type("pokusavam100");
-  cy.get("button[type='submit']").click();
+  loginPage.loginUser("draganan@gmail.com", "pokusavam100");
   cy.wait(3000);
   cy.visit("create");
 

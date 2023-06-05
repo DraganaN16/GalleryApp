@@ -12,8 +12,12 @@ module.exports = defineConfig({
     env: {
       registeredEmail: "draganan@gmail.com",
       validPassword: "pokusavam100",
-      baseApiUrl: "https://gallery-api.vivifyideas.com/api/",
+      validFirstName: "Pera",
+      validLastName: "Peric"
+      
       //myGalleriesButtonLabel: "My Galleries"
-    }
+
+    },
+    baseApiUrl: "https://gallery-api.vivifyideas.com/api/",
   },
 });
