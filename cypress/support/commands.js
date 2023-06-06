@@ -86,3 +86,37 @@
 //           console.log(userId);
 //      })
 // });
+
+Cypress.Commands.add('loginViaApi', (userEmail = 'markoqa13@gmail.com', userPass = 'Marko123') => {
+    cy.request({
+        url: 'https://gallery-api.vivifyideas.com/api/auth/login',
+        method: 'POST',
+        body: {
+            email: userEmail,
+            password: userPass
+        }
+    }).its('body').then((odgovor) => {
+        expect(odgovor.access_token).to.be.a('string');
+        expect(odgovor.token_type).eq('bearer');
+        
+        window.localStorage.setItem('token', odgovor.access_token)
+    })
+
+})
+
+Cypress.Commands.add('registerUserViaApi', (firstName, lastName, email, pass, passConfirm, acceptTerms = true) => {
+    cy.request({
+        url: 'https://gallery-api.vivifyideas.com/api/auth/register',
+        method: 'POST',
+        body: {
+            "first_name": firstName,
+            "last_name": lastName,
+            "email": email,
+            "password": pass,
+            "password_confirmation": passConfirm,
+            "terms_and_conditions": acceptTerms
+        }
+    }).its('body').then((odgovor) => {
+
+    })
+})

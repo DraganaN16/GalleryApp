@@ -8,12 +8,13 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://gallery-app.vivifyideas.com/",
-    baseApiUrl: "https://gallery-api.vivifyideas.com/api/",
+   
     env: {
-      registeredEmail: "draganan@gmail.com",
-      validPassword: "pokusavam100",
+       registeredEmail: "draganan@gmail.com",
+       validPassword: "pokusavam100",
+       baseApiUrl: "https://gallery-api.vivifyideas.com/api/",
       //myGalleriesButtonLabel: "My Galleries"
-
+     
     },
    
   },
